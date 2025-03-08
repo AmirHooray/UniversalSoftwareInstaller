@@ -9,10 +9,9 @@ public class DependencyInitializer {
     public static void programInit() {
         UniversalInstallerController controller = createUniversalInstallerUI();
         UniversalInstallerUI installerUi = new UniversalInstallerUI(
-                createUniversalInstallerUI()
+                controller
         );
         installerUi.setVisible(true);
-        controller.attacheView(installerUi);
     }
 
     private static UniversalInstallerController createUniversalInstallerUI() {

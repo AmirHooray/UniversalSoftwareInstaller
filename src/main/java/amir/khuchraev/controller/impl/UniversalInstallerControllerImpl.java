@@ -34,5 +34,11 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
             view.showDialogHomeProgramPathEmpty();
             return;
         }
+        view.showDialogSetupProgramStart();
+
+    }
+
+    private void startProgramSetup() {
+
     }
 }

@@ -3,12 +3,10 @@ package amir.khuchraev.ui;
 import amir.khuchraev.controller.UniversalInstallerController;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static amir.khuchraev.consts.Const.FILE_TYPE;
 import static amir.khuchraev.consts.StringConst.*;
 
 public class UniversalInstallerUI extends JFrame implements View {
@@ -20,6 +18,7 @@ public class UniversalInstallerUI extends JFrame implements View {
 
     public UniversalInstallerUI(UniversalInstallerController controller) {
         this.controller = controller;
+        this.controller.attacheView(this);
         setTitle(PROGRAM_TITLE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 270);
@@ -58,7 +57,6 @@ public class UniversalInstallerUI extends JFrame implements View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setFileFilter(new FileNameExtensionFilter(TITLE_TYPE_ZIP, FILE_TYPE));
                 int result = fileChooser.showOpenDialog(UniversalInstallerUI.this);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     String absolutePath = fileChooser.getSelectedFile().getAbsolutePath();
@@ -121,11 +119,22 @@ public class UniversalInstallerUI extends JFrame implements View {
 
     @Override
     public void showDialogSetupProgramPathEmpty() {
-
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                ERROR_CHOOSE_PROGRAM_TITLE,
+                ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showDialogHomeProgramPathEmpty() {
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                ERROR_CHOOSE_PATH_TITLE,
+                ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
+    }
 
+    @Override
+    public void showDialogSetupProgramStart() {
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                START_TITLE,
+                "", JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -5,4 +5,6 @@ public interface View {
     void showDialogSetupProgramPathEmpty();
 
     void showDialogHomeProgramPathEmpty();
+
+    void showDialogSetupProgramStart();
 }
