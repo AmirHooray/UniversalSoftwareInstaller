@@ -61,7 +61,9 @@ public class UniversalInstallerUI extends JFrame {
                 fileChooser.setFileFilter(new FileNameExtensionFilter(TITLE_TYPE_ZIP, FILE_TYPE));
                 int result = fileChooser.showOpenDialog(UniversalInstallerUI.this);
                 if (result == JFileChooser.APPROVE_OPTION) {
-                    installProgramField.setText(fileChooser.getSelectedFile().getAbsolutePath());
+                    String absolutePath = fileChooser.getSelectedFile().getAbsolutePath();
+                    installProgramField.setText(absolutePath);
+                    controller.setSetupProgramPath(absolutePath);
                 }
             }
         });
@@ -84,7 +86,9 @@ public class UniversalInstallerUI extends JFrame {
                 folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int result = folderChooser.showOpenDialog(UniversalInstallerUI.this);
                 if (result == JFileChooser.APPROVE_OPTION) {
-                    installFolderField.setText(folderChooser.getSelectedFile().getAbsolutePath());
+                    String absolutePath = folderChooser.getSelectedFile().getAbsolutePath();
+                    installFolderField.setText(absolutePath);
+                    controller.setHomeProgramPath(absolutePath);
                 }
             }
         });
@@ -108,7 +112,7 @@ public class UniversalInstallerUI extends JFrame {
         setupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                controller.clickProgramSetup();
             }
         });
         mainPanel.add(setupButton);
