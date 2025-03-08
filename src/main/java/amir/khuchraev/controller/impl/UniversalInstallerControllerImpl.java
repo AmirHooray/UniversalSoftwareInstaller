@@ -1,6 +1,7 @@
 package amir.khuchraev.controller.impl;
 
 import amir.khuchraev.controller.UniversalInstallerController;
+import amir.khuchraev.managers.FileManager;
 import amir.khuchraev.managers.RegistrationManagerInWindowsRegistry;
 import amir.khuchraev.ui.View;
 
@@ -12,9 +13,14 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
     private String homeProgramPath = "";
     private View view;
     private RegistrationManagerInWindowsRegistry registrationManager;
+    private FileManager fileManager;
 
-    public UniversalInstallerControllerImpl(RegistrationManagerInWindowsRegistry registrationManager) {
+    public UniversalInstallerControllerImpl(
+            RegistrationManagerInWindowsRegistry registrationManager,
+            FileManager fileManager
+    ) {
         this.registrationManager = registrationManager;
+        this.fileManager = fileManager;
     }
 
     @Override
@@ -80,7 +86,7 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
             }
         }
         if (exeFile != null) {
-            exeSelected(exeFile);
+            copeFilesAndRegistryExe(exeFile, choosenFile);
         } else {
             view.showDialogErrorProgramNotFound();
         }
@@ -92,5 +98,9 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
 
     private void exeSelected(File choosenFile) {
 
+    }
+
+    private void copeFilesAndRegistryExe(File exeSelected, File rootDirectory) {
+        fileManager.copyFilesFromTo(rootDirectory, homeProgramPath);
     }
 }

@@ -57,6 +57,7 @@ public class UniversalInstallerUI extends JFrame implements View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                 int result = fileChooser.showOpenDialog(UniversalInstallerUI.this);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     String absolutePath = fileChooser.getSelectedFile().getAbsolutePath();
@@ -81,7 +82,7 @@ public class UniversalInstallerUI extends JFrame implements View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser folderChooser = new JFileChooser();
-                folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                folderChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
                 int result = folderChooser.showOpenDialog(UniversalInstallerUI.this);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     String absolutePath = folderChooser.getSelectedFile().getAbsolutePath();
