@@ -1,4 +1,4 @@
-package amir.khuchraev;
+package amir.khuchraev.consts;
 
 public class Const {
 

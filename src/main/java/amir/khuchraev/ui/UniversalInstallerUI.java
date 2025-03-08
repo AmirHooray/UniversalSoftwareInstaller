@@ -6,8 +6,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static amir.khuchraev.Const.FILE_TYPE;
-import static amir.khuchraev.StringConst.*;
+import static amir.khuchraev.consts.Const.FILE_TYPE;
+import static amir.khuchraev.consts.StringConst.*;
 
 public class UniversalInstallerUI extends JFrame {
 

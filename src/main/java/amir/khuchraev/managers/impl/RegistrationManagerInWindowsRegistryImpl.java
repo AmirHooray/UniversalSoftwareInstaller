@@ -4,7 +4,7 @@ import amir.khuchraev.managers.RegistrationManagerInWindowsRegistry;
 import com.sun.jna.platform.win32.Advapi32Util;
 import com.sun.jna.platform.win32.WinReg;
 
-import static amir.khuchraev.Const.*;
+import static amir.khuchraev.consts.Const.*;
 
 public class RegistrationManagerInWindowsRegistryImpl implements RegistrationManagerInWindowsRegistry {
 
