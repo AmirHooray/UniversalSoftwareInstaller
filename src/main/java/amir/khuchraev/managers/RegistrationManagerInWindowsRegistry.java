@@ -1,4 +1,4 @@
-package amir.khuchraev.advapi;
+package amir.khuchraev.managers;
 
 import com.sun.jna.platform.win32.Advapi32Util;
 import com.sun.jna.platform.win32.WinReg;
