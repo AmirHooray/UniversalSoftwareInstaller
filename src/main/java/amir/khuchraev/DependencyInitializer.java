@@ -2,6 +2,7 @@ package amir.khuchraev;
 
 import amir.khuchraev.controller.UniversalInstallerController;
 import amir.khuchraev.controller.impl.UniversalInstallerControllerImpl;
+import amir.khuchraev.managers.impl.RegistrationManagerInWindowsRegistryImpl;
 import amir.khuchraev.ui.UniversalInstallerUI;
 
 public class DependencyInitializer {
@@ -15,6 +16,8 @@ public class DependencyInitializer {
     }
 
     private static UniversalInstallerController createUniversalInstallerUI() {
-        return new UniversalInstallerControllerImpl();
+        return new UniversalInstallerControllerImpl(
+                new RegistrationManagerInWindowsRegistryImpl()
+        );
     }
 }

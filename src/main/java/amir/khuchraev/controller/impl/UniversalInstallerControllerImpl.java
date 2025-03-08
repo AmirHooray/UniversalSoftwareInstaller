@@ -1,6 +1,7 @@
 package amir.khuchraev.controller.impl;
 
 import amir.khuchraev.controller.UniversalInstallerController;
+import amir.khuchraev.managers.RegistrationManagerInWindowsRegistry;
 import amir.khuchraev.ui.View;
 
 public class UniversalInstallerControllerImpl implements UniversalInstallerController {
@@ -8,6 +9,11 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
     private String setupProgramPath = "";
     private String homeProgramPath = "";
     private View view;
+    private RegistrationManagerInWindowsRegistry registrationManager;
+
+    public UniversalInstallerControllerImpl(RegistrationManagerInWindowsRegistry registrationManager) {
+        this.registrationManager = registrationManager;
+    }
 
     @Override
     public void attacheView(View view) {
