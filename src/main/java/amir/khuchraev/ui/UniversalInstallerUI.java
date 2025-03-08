@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import static amir.khuchraev.consts.Const.FILE_TYPE;
 import static amir.khuchraev.consts.StringConst.*;
 
-public class UniversalInstallerUI extends JFrame {
+public class UniversalInstallerUI extends JFrame implements View {
 
     private JTextField installProgramField;
     private JTextField installFolderField;
@@ -117,5 +117,15 @@ public class UniversalInstallerUI extends JFrame {
         });
         mainPanel.add(setupButton);
         mainPanel.add(Box.createVerticalStrut(10));
+    }
+
+    @Override
+    public void showDialogSetupProgramPathEmpty() {
+
+    }
+
+    @Override
+    public void showDialogHomeProgramPathEmpty() {
+
     }
 }
