@@ -159,4 +159,18 @@ public class UniversalInstallerUI extends JFrame implements View {
                 ERROR_TITLE_PROGRAM_NOT_FOUND,
                 ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
+
+    @Override
+    public void showErrorDialogCopyFiles() {
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                ERROR_TITLE_COPY_FILE,
+                ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void showDialogSetupProgramFinished() {
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                TEXT_FINISHED,
+                TITLE_FINISHED, JOptionPane.INFORMATION_MESSAGE);
+    }
 }

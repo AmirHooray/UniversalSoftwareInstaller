@@ -16,4 +16,7 @@ public class StringConst {
     public static final String ERROR_FILE_SELECTED = "Вы выбрали неизвестный тип файла!";
     public static final String ERROR_TITLE_CHOSEN_PATH = "Выбранный путь установки некорректный!";
     public static final String ERROR_TITLE_PROGRAM_NOT_FOUND = "В выбранной программной директории программа для установки не найдена!";
+    public static final String ERROR_TITLE_COPY_FILE = "Во время установки возникла ошибка";
+    public static final String TITLE_FINISHED = "Успех";
+    public static final String TEXT_FINISHED = "Установка программы успешно завершена. Программа внесена в реестр Windows и все ее файлы скопированы в выбранную папку";
 }

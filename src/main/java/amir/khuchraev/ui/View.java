@@ -13,4 +13,8 @@ public interface View {
     void showErrorDialogChosenPathNotCorrect();
 
     void showDialogErrorProgramNotFound();
+
+    void showErrorDialogCopyFiles();
+
+    void showDialogSetupProgramFinished();
 }

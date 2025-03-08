@@ -6,6 +6,7 @@ import amir.khuchraev.managers.RegistrationManagerInWindowsRegistry;
 import amir.khuchraev.ui.View;
 
 import java.io.File;
+import java.io.IOException;
 
 public class UniversalInstallerControllerImpl implements UniversalInstallerController {
 
@@ -101,6 +102,12 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
     }
 
     private void copeFilesAndRegistryExe(File exeSelected, File rootDirectory) {
-        fileManager.copyFilesFromTo(rootDirectory, homeProgramPath);
+        try {
+            fileManager.copyFilesFromTo(rootDirectory, homeProgramPath);
+            // TODO здесь остается внести в реестр Windows
+            view.showDialogSetupProgramFinished();
+        } catch (IOException e) {
+            view.showErrorDialogCopyFiles();
+        }
     }
 }
