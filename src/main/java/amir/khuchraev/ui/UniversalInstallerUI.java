@@ -151,4 +151,11 @@ public class UniversalInstallerUI extends JFrame implements View {
                 ERROR_TITLE_CHOSEN_PATH,
                 ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
+
+    @Override
+    public void showDialogErrorProgramNotFound() {
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                ERROR_TITLE_PROGRAM_NOT_FOUND,
+                ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
+    }
 }

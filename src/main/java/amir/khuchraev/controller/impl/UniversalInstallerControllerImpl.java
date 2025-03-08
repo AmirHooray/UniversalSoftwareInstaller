@@ -54,28 +54,43 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
             return;
         }
         if (choosenFile.isDirectory()) {
-            directorySelected();
+            directorySelected(choosenFile);
         } else {
             String fileName = choosenFile.getName().toLowerCase();
             if (fileName.endsWith(".zip")) {
-                zipSelected();
+                zipSelected(choosenFile);
             } else if (fileName.endsWith(".exe")) {
-                exeSelected();
+                exeSelected(choosenFile);
             } else {
                 view.showDialogErrorFileSelected();
             }
         }
     }
 
-    private void directorySelected() {
+    private void directorySelected(File choosenFile) {
+        File exeFile = null;
+        File[] files = choosenFile.listFiles();
+        if (files == null) {
+            view.showDialogErrorProgramNotFound();
+            return;
+        }
+        for (File file : files) {
+            if (file.getName().toLowerCase().endsWith(".exe")) {
+                exeFile = file;
+            }
+        }
+        if (exeFile != null) {
+            exeSelected(exeFile);
+        } else {
+            view.showDialogErrorProgramNotFound();
+        }
+    }
+
+    private void zipSelected(File choosenFile) {
 
     }
 
-    private void zipSelected() {
-
-    }
-
-    private void exeSelected() {
+    private void exeSelected(File choosenFile) {
 
     }
 }

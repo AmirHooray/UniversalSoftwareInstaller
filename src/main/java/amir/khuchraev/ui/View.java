@@ -11,4 +11,6 @@ public interface View {
     void showDialogErrorFileSelected();
 
     void showErrorDialogChosenPathNotCorrect();
+
+    void showDialogErrorProgramNotFound();
 }
