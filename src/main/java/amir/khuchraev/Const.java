@@ -9,4 +9,6 @@ public class Const {
     public static final String INSTALL_LOCATION = "InstallLocation";
     public static final String DISPLAY_ICON = "DisplayIcon";
     public static final String UNINSTALL_STRING = "UninstallString";
+
+    public static final String FILE_TYPE = "zip";
 }

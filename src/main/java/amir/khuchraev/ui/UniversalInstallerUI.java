@@ -1,0 +1,99 @@
+package amir.khuchraev.ui;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static amir.khuchraev.Const.FILE_TYPE;
+import static amir.khuchraev.StringConst.*;
+
+public class UniversalInstallerUI extends JFrame {
+
+    private JTextField installProgramField;
+    private JTextField installFolderField;
+    private JCheckBox shortcutCheckBox;
+
+    public UniversalInstallerUI() {
+        setTitle(PROGRAM_TITLE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 250);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        initComponents();
+    }
+
+    private void initComponents() {
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+        createTitle(mainPanel);
+        createChooseProgramInstalledPanel(mainPanel);
+        createChoosePathInstalled(mainPanel);
+        createShortcutCheckBox(mainPanel);
+
+        add(mainPanel);
+    }
+
+
+    private void createTitle(JPanel mainPanel) {
+        JLabel titleLabel = new JLabel(MAIN_TITLE);
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainPanel.add(titleLabel);
+        mainPanel.add(Box.createVerticalStrut(20));
+    }
+
+    private void createChooseProgramInstalledPanel(JPanel mainPanel) {
+        JPanel installProgramPanel = new JPanel(new BorderLayout(5, 5));
+        JLabel installProgramLabel = new JLabel(CHOOSE_TITLE);
+        installProgramField = new JTextField();
+        JButton installProgramBrowseButton = new JButton(DISCOVER_TITLE);
+        installProgramBrowseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileFilter(new FileNameExtensionFilter(TITLE_TYPE_ZIP, FILE_TYPE));
+                int result = fileChooser.showOpenDialog(UniversalInstallerUI.this);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    installProgramField.setText(fileChooser.getSelectedFile().getAbsolutePath());
+                }
+            }
+        });
+        installProgramPanel.add(installProgramLabel, BorderLayout.WEST);
+        installProgramPanel.add(installProgramField, BorderLayout.CENTER);
+        installProgramPanel.add(installProgramBrowseButton, BorderLayout.EAST);
+        mainPanel.add(installProgramPanel);
+        mainPanel.add(Box.createVerticalStrut(10));
+    }
+
+    private void createChoosePathInstalled(JPanel mainPanel) {
+        JPanel folderPanel = new JPanel(new BorderLayout(5, 5));
+        JLabel folderLabel = new JLabel(PATH_TITLE);
+        installFolderField = new JTextField();
+        JButton folderBrowseButton = new JButton(DISCOVER_TITLE);
+        folderBrowseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser folderChooser = new JFileChooser();
+                folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int result = folderChooser.showOpenDialog(UniversalInstallerUI.this);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    installFolderField.setText(folderChooser.getSelectedFile().getAbsolutePath());
+                }
+            }
+        });
+        folderPanel.add(folderLabel, BorderLayout.WEST);
+        folderPanel.add(installFolderField, BorderLayout.CENTER);
+        folderPanel.add(folderBrowseButton, BorderLayout.EAST);
+        mainPanel.add(folderPanel);
+        mainPanel.add(Box.createVerticalStrut(10));
+    }
+
+    private void createShortcutCheckBox(JPanel mainPanel) {
+        shortcutCheckBox = new JCheckBox(CREATE_SHORTCUT_TITLE);
+        shortcutCheckBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainPanel.add(shortcutCheckBox);
+        mainPanel.add(Box.createVerticalStrut(20));
+    }
+}
