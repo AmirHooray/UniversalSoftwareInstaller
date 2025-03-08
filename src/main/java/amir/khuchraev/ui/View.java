@@ -7,4 +7,8 @@ public interface View {
     void showDialogHomeProgramPathEmpty();
 
     void showDialogSetupProgramStart();
+
+    void showDialogErrorFileSelected();
+
+    void showErrorDialogChosenPathNotCorrect();
 }

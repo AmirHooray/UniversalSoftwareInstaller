@@ -13,4 +13,6 @@ public class StringConst {
     public static final String ERROR_CHOOSE_PROGRAM_TITLE = "Выберите устанавливаемую программу!";
     public static final String ERROR_CHOOSE_PATH_TITLE = "Выберите директорию для установки программы";
     public static final String START_TITLE = "Начат процесс установки программы";
+    public static final String ERROR_FILE_SELECTED = "Вы выбрали неизвестный тип файла!";
+    public static final String ERROR_TITLE_CHOSEN_PATH = "Выбранный путь установки некорректный!";
 }

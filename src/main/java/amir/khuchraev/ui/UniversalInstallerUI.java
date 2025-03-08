@@ -137,4 +137,18 @@ public class UniversalInstallerUI extends JFrame implements View {
                 START_TITLE,
                 "", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    @Override
+    public void showDialogErrorFileSelected() {
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                ERROR_FILE_SELECTED,
+                ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void showErrorDialogChosenPathNotCorrect() {
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                ERROR_TITLE_CHOSEN_PATH,
+                ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
+    }
 }

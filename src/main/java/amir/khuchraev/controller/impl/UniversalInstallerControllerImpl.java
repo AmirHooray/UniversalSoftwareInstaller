@@ -4,6 +4,8 @@ import amir.khuchraev.controller.UniversalInstallerController;
 import amir.khuchraev.managers.RegistrationManagerInWindowsRegistry;
 import amir.khuchraev.ui.View;
 
+import java.io.File;
+
 public class UniversalInstallerControllerImpl implements UniversalInstallerController {
 
     private String setupProgramPath = "";
@@ -41,10 +43,39 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
             return;
         }
         view.showDialogSetupProgramStart();
-
+        startProgramSetup();
     }
 
     private void startProgramSetup() {
+        File choosenFile = new File(setupProgramPath);
+        File chosenPath = new File(homeProgramPath);
+        if (!chosenPath.isDirectory()) {
+            view.showErrorDialogChosenPathNotCorrect();
+            return;
+        }
+        if (choosenFile.isDirectory()) {
+            directorySelected();
+        } else {
+            String fileName = choosenFile.getName().toLowerCase();
+            if (fileName.endsWith(".zip")) {
+                zipSelected();
+            } else if (fileName.endsWith(".exe")) {
+                exeSelected();
+            } else {
+                view.showDialogErrorFileSelected();
+            }
+        }
+    }
+
+    private void directorySelected() {
+
+    }
+
+    private void zipSelected() {
+
+    }
+
+    private void exeSelected() {
 
     }
 }
