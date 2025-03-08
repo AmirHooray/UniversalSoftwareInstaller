@@ -9,4 +9,5 @@ public class StringConst {
     public static final String PATH_TITLE = "Папка установки:";
     public static final String CREATE_SHORTCUT_TITLE = "Создать ярлык на рабочем столе";
     public static final String TITLE_TYPE_ZIP = "ZIP архивы";
+    public static final String TITLE_START_SETUP_PROGRAM = "Установить программу";
 }

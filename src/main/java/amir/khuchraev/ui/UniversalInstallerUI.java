@@ -18,7 +18,7 @@ public class UniversalInstallerUI extends JFrame {
     public UniversalInstallerUI() {
         setTitle(PROGRAM_TITLE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 250);
+        setSize(600, 270);
         setResizable(false);
         setLocationRelativeTo(null);
         initComponents();
@@ -32,6 +32,7 @@ public class UniversalInstallerUI extends JFrame {
         createChooseProgramInstalledPanel(mainPanel);
         createChoosePathInstalled(mainPanel);
         createShortcutCheckBox(mainPanel);
+        createButtonSetupProgram(mainPanel);
 
         add(mainPanel);
     }
@@ -95,5 +96,18 @@ public class UniversalInstallerUI extends JFrame {
         shortcutCheckBox.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainPanel.add(shortcutCheckBox);
         mainPanel.add(Box.createVerticalStrut(20));
+    }
+
+    private void createButtonSetupProgram(JPanel mainPanel) {
+        JButton setupButton = new JButton(TITLE_START_SETUP_PROGRAM);
+        setupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        setupButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        mainPanel.add(setupButton);
+        mainPanel.add(Box.createVerticalStrut(10));
     }
 }
