@@ -1,5 +1,7 @@
 package amir.khuchraev.ui;
 
+import amir.khuchraev.controller.UniversalInstallerController;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -14,8 +16,10 @@ public class UniversalInstallerUI extends JFrame {
     private JTextField installProgramField;
     private JTextField installFolderField;
     private JCheckBox shortcutCheckBox;
+    private UniversalInstallerController controller;
 
-    public UniversalInstallerUI() {
+    public UniversalInstallerUI(UniversalInstallerController controller) {
+        this.controller = controller;
         setTitle(PROGRAM_TITLE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 270);
