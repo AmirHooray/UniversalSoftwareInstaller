@@ -118,9 +118,9 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
                     new File(homeProgramPath + "\\" + exeSelected.getName()),
                     new File(homeProgramPath)
             );
-//            if (registrationManager.programRegistrationInWindowsRegistry(model)) {
-//                view.showDialogUpdateProgramRegistry();
-//            }
+            if (registrationManager.programRegistrationInWindowsRegistry(model)) {
+                view.showDialogUpdateProgramRegistry();
+            }
             view.showDialogSetupProgramFinished();
         } catch (IOException e) {
             view.showErrorDialogCopyFiles();
