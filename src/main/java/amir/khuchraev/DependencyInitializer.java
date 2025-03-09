@@ -3,6 +3,7 @@ package amir.khuchraev;
 import amir.khuchraev.controller.UniversalInstallerController;
 import amir.khuchraev.controller.impl.UniversalInstallerControllerImpl;
 import amir.khuchraev.managers.impl.FileManagerImpl;
+import amir.khuchraev.managers.impl.MetaExeManagerImpl;
 import amir.khuchraev.managers.impl.RegistrationManagerInWindowsRegistryImpl;
 import amir.khuchraev.ui.UniversalInstallerUI;
 
@@ -19,7 +20,8 @@ public class DependencyInitializer {
     private static UniversalInstallerController createUniversalInstallerUI() {
         return new UniversalInstallerControllerImpl(
                 new RegistrationManagerInWindowsRegistryImpl(),
-                new FileManagerImpl()
+                new FileManagerImpl(),
+                new MetaExeManagerImpl()
         );
     }
 }

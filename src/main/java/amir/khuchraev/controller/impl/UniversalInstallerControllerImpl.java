@@ -2,7 +2,9 @@ package amir.khuchraev.controller.impl;
 
 import amir.khuchraev.controller.UniversalInstallerController;
 import amir.khuchraev.managers.FileManager;
+import amir.khuchraev.managers.MetaExeManager;
 import amir.khuchraev.managers.RegistrationManagerInWindowsRegistry;
+import amir.khuchraev.models.ProgramRegistrationInWindowsModel;
 import amir.khuchraev.ui.View;
 
 import java.io.File;
@@ -13,15 +15,18 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
     private String setupProgramPath = "";
     private String homeProgramPath = "";
     private View view;
-    private RegistrationManagerInWindowsRegistry registrationManager;
-    private FileManager fileManager;
+    final private RegistrationManagerInWindowsRegistry registrationManager;
+    final private MetaExeManager metaExeManager;
+    final private FileManager fileManager;
 
     public UniversalInstallerControllerImpl(
             RegistrationManagerInWindowsRegistry registrationManager,
-            FileManager fileManager
+            FileManager fileManager,
+            MetaExeManager metaExeManager
     ) {
         this.registrationManager = registrationManager;
         this.fileManager = fileManager;
+        this.metaExeManager = metaExeManager;
     }
 
     @Override
@@ -104,7 +109,16 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
     private void copeFilesAndRegistryExe(File exeSelected, File rootDirectory) {
         try {
             fileManager.copyFilesFromTo(rootDirectory, homeProgramPath);
-            // TODO здесь остается внести в реестр Windows
+            ProgramRegistrationInWindowsModel model = metaExeManager.getProgramMetaInfo(
+                    new File(homeProgramPath + "\\" + exeSelected.getName()),
+                    new File(homeProgramPath)
+            );
+            System.out.println("appKeyName " + model.getAppKeyName());
+            System.out.println("displayName " + model.getDisplayName());
+            System.out.println("displayVersion " + model.getDisplayVersion());
+            System.out.println("publisher " + model.getPublisher());
+            System.out.println("installLocation " + model.getInstallLocation());
+            System.out.println("displayIcon " + model.getDisplayIcon());
             view.showDialogSetupProgramFinished();
         } catch (IOException e) {
             view.showErrorDialogCopyFiles();

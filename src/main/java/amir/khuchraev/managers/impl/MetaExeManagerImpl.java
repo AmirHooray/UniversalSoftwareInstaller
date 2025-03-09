@@ -28,7 +28,7 @@ public class MetaExeManagerImpl implements MetaExeManager {
         if (!result) {
             return null;
         }
-        String productName = queryVersionString(buffer, "\\StringFileInfo\\040904E4\\ProductName");
+        String productName = exeFile.getName().split("\\.")[0];
         String fileVersion = queryVersionString(buffer, "\\StringFileInfo\\040904E4\\FileVersion");
         String companyName = queryVersionString(buffer, "\\StringFileInfo\\040904E4\\CompanyName");
         return new ProgramRegistrationInWindowsModel(

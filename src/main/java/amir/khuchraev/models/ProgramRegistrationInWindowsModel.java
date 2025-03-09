@@ -2,13 +2,13 @@ package amir.khuchraev.models;
 
 public class ProgramRegistrationInWindowsModel {
 
-    private String appKeyName;
-    private String displayName;
-    private String displayVersion;
-    private String publisher;
-    private String installLocation;
-    private String displayIcon;
-    private String uninstallString;
+    final private String appKeyName;
+    final private String displayName;
+    final private String displayVersion;
+    final private String publisher;
+    final private String installLocation;
+    final private String displayIcon;
+    final private String uninstallString;
 
     public ProgramRegistrationInWindowsModel(
             String appKeyName,
