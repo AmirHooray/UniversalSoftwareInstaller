@@ -19,4 +19,5 @@ public class StringConst {
     public static final String ERROR_TITLE_COPY_FILE = "Во время установки возникла ошибка";
     public static final String TITLE_FINISHED = "Успех";
     public static final String TEXT_FINISHED = "Установка программы успешно завершена. Программа внесена в реестр Windows и все ее файлы скопированы в выбранную папку";
+    public static final String TEXT_TITLE_UPDATE = "Программа уже есть в реестре windows! Обновляем информацию реестра!";
 }

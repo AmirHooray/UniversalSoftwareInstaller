@@ -29,8 +29,20 @@ public class MetaExeManagerImpl implements MetaExeManager {
             return null;
         }
         String productName = exeFile.getName().split("\\.")[0];
-        String fileVersion = queryVersionString(buffer, "\\StringFileInfo\\040904E4\\FileVersion");
-        String companyName = queryVersionString(buffer, "\\StringFileInfo\\040904E4\\CompanyName");
+        PointerByReference transPtr = new PointerByReference();
+        IntByReference transLen = new IntByReference();
+        boolean transResult = Version.INSTANCE.VerQueryValue(buffer, "\\VarFileInfo\\Translation", transPtr, transLen);
+        if (!transResult || transLen.getValue() < 4) {
+            return null;
+        }
+        byte[] transBytes = transPtr.getValue().getByteArray(0, transLen.getValue());
+        int lang = ((transBytes[1] & 0xff) << 8) | (transBytes[0] & 0xff);
+        int codepage = ((transBytes[3] & 0xff) << 8) | (transBytes[2] & 0xff);
+        String langCode = String.format("%04X%04X", lang, codepage);
+        String versionKey = "\\StringFileInfo\\" + langCode + "\\FileVersion";
+        String companyKey = "\\StringFileInfo\\" + langCode + "\\CompanyName";
+        String fileVersion = queryVersionString(buffer, versionKey);
+        String companyName = queryVersionString(buffer, companyKey);
         return new ProgramRegistrationInWindowsModel(
                 productName,
                 productName,
@@ -46,7 +58,7 @@ public class MetaExeManagerImpl implements MetaExeManager {
         PointerByReference pbr = new PointerByReference();
         IntByReference len = new IntByReference();
         boolean queryResult = Version.INSTANCE.VerQueryValue(buffer, subBlock, pbr, len);
-        if (queryResult) {
+        if (queryResult && len.getValue() > 0) {
             Pointer ptr = pbr.getValue();
             return ptr.getWideString(0);
         }

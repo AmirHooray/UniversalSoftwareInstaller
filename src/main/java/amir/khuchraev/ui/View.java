@@ -17,4 +17,6 @@ public interface View {
     void showErrorDialogCopyFiles();
 
     void showDialogSetupProgramFinished();
+
+    void showDialogUpdateProgramRegistry();
 }

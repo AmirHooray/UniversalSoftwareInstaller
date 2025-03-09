@@ -173,4 +173,11 @@ public class UniversalInstallerUI extends JFrame implements View {
                 TEXT_FINISHED,
                 TITLE_FINISHED, JOptionPane.INFORMATION_MESSAGE);
     }
+
+    @Override
+    public void showDialogUpdateProgramRegistry() {
+        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+                TEXT_TITLE_UPDATE,
+                TITLE_FINISHED, JOptionPane.INFORMATION_MESSAGE);
+    }
 }

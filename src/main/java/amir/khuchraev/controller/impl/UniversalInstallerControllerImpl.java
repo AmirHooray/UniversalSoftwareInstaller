@@ -64,6 +64,11 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
         if (!chosenPath.isDirectory()) {
             view.showErrorDialogChosenPathNotCorrect();
             return;
+        } else {
+            File[] files = chosenPath.listFiles();
+            if (files != null && files.length > 0) {
+                clearChosenDirectory(files);
+            }
         }
         if (choosenFile.isDirectory()) {
             directorySelected(choosenFile);
@@ -113,15 +118,23 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
                     new File(homeProgramPath + "\\" + exeSelected.getName()),
                     new File(homeProgramPath)
             );
-            System.out.println("appKeyName " + model.getAppKeyName());
-            System.out.println("displayName " + model.getDisplayName());
-            System.out.println("displayVersion " + model.getDisplayVersion());
-            System.out.println("publisher " + model.getPublisher());
-            System.out.println("installLocation " + model.getInstallLocation());
-            System.out.println("displayIcon " + model.getDisplayIcon());
+//            if (registrationManager.programRegistrationInWindowsRegistry(model)) {
+//                view.showDialogUpdateProgramRegistry();
+//            }
             view.showDialogSetupProgramFinished();
         } catch (IOException e) {
             view.showErrorDialogCopyFiles();
+        }
+    }
+
+    private void clearChosenDirectory(File[] files) {
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    clearChosenDirectory(file.listFiles());
+                }
+                file.delete();
+            }
         }
     }
 }
