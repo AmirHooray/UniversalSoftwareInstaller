@@ -4,6 +4,7 @@ import amir.khuchraev.controller.UniversalInstallerController;
 import amir.khuchraev.managers.FileManager;
 import amir.khuchraev.managers.MetaExeManager;
 import amir.khuchraev.managers.RegistrationManagerInWindowsRegistry;
+import amir.khuchraev.managers.ZipManager;
 import amir.khuchraev.models.ProgramRegistrationInWindowsModel;
 import amir.khuchraev.ui.View;
 
@@ -18,15 +19,18 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
     final private RegistrationManagerInWindowsRegistry registrationManager;
     final private MetaExeManager metaExeManager;
     final private FileManager fileManager;
+    final private ZipManager zipManager;
 
     public UniversalInstallerControllerImpl(
             RegistrationManagerInWindowsRegistry registrationManager,
             FileManager fileManager,
-            MetaExeManager metaExeManager
+            MetaExeManager metaExeManager,
+            ZipManager zipManager
     ) {
         this.registrationManager = registrationManager;
         this.fileManager = fileManager;
         this.metaExeManager = metaExeManager;
+        this.zipManager = zipManager;
     }
 
     @Override
@@ -104,7 +108,12 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
     }
 
     private void zipSelected(File choosenFile) {
-
+        try {
+            File rootZipedDirectory = zipManager.unzipFile(choosenFile);
+            directorySelected(rootZipedDirectory);
+        } catch (Exception e) {
+            view.showErrorDialogCopyFiles();
+        }
     }
 
     private void exeSelected(File exeFile) {
