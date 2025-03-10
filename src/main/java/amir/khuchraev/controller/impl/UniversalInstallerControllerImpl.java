@@ -107,8 +107,9 @@ public class UniversalInstallerControllerImpl implements UniversalInstallerContr
 
     }
 
-    private void exeSelected(File choosenFile) {
-
+    private void exeSelected(File exeFile) {
+        File rootDirectory = exeFile.getParentFile();
+        copeFilesAndRegistryExe(exeFile, rootDirectory);
     }
 
     private void copeFilesAndRegistryExe(File exeSelected, File rootDirectory) {
