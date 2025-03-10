@@ -9,14 +9,14 @@ import java.awt.event.ActionListener;
 
 import static amir.khuchraev.consts.StringConst.*;
 
-public class UniversalInstallerUI extends JFrame implements View {
+public class UniversalInstallerViewImpl extends JFrame implements View {
 
     private JTextField installProgramField;
     private JTextField installFolderField;
     private JCheckBox shortcutCheckBox;
     private UniversalInstallerController controller;
 
-    public UniversalInstallerUI(UniversalInstallerController controller) {
+    public UniversalInstallerViewImpl(UniversalInstallerController controller) {
         this.controller = controller;
         this.controller.attacheView(this);
         setTitle(PROGRAM_TITLE);
@@ -58,7 +58,7 @@ public class UniversalInstallerUI extends JFrame implements View {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-                int result = fileChooser.showOpenDialog(UniversalInstallerUI.this);
+                int result = fileChooser.showOpenDialog(UniversalInstallerViewImpl.this);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     String absolutePath = fileChooser.getSelectedFile().getAbsolutePath();
                     installProgramField.setText(absolutePath);
@@ -83,7 +83,7 @@ public class UniversalInstallerUI extends JFrame implements View {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser folderChooser = new JFileChooser();
                 folderChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-                int result = folderChooser.showOpenDialog(UniversalInstallerUI.this);
+                int result = folderChooser.showOpenDialog(UniversalInstallerViewImpl.this);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     String absolutePath = folderChooser.getSelectedFile().getAbsolutePath();
                     installFolderField.setText(absolutePath);
@@ -120,63 +120,63 @@ public class UniversalInstallerUI extends JFrame implements View {
 
     @Override
     public void showDialogSetupProgramPathEmpty() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 ERROR_CHOOSE_PROGRAM_TITLE,
                 ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showDialogHomeProgramPathEmpty() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 ERROR_CHOOSE_PATH_TITLE,
                 ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showDialogSetupProgramStart() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 START_TITLE,
                 "", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showDialogErrorFileSelected() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 ERROR_FILE_SELECTED,
                 ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showErrorDialogChosenPathNotCorrect() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 ERROR_TITLE_CHOSEN_PATH,
                 ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showDialogErrorProgramNotFound() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 ERROR_TITLE_PROGRAM_NOT_FOUND,
                 ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showErrorDialogCopyFiles() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 ERROR_TITLE_COPY_FILE,
                 ERROR_TITLE, JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showDialogSetupProgramFinished() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 TEXT_FINISHED,
                 TITLE_FINISHED, JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void showDialogUpdateProgramRegistry() {
-        JOptionPane.showMessageDialog(UniversalInstallerUI.this,
+        JOptionPane.showMessageDialog(UniversalInstallerViewImpl.this,
                 TEXT_TITLE_UPDATE,
                 TITLE_FINISHED, JOptionPane.INFORMATION_MESSAGE);
     }

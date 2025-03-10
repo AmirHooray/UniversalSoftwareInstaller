@@ -6,13 +6,13 @@ import amir.khuchraev.managers.impl.FileManagerImpl;
 import amir.khuchraev.managers.impl.MetaExeManagerImpl;
 import amir.khuchraev.managers.impl.RegistrationManagerInWindowsRegistryImpl;
 import amir.khuchraev.managers.impl.ZipManagerImpl;
-import amir.khuchraev.ui.UniversalInstallerUI;
+import amir.khuchraev.ui.UniversalInstallerViewImpl;
 
 public class DependencyInitializer {
 
     public static void programInit() {
         UniversalInstallerController controller = createUniversalInstallerUI();
-        UniversalInstallerUI installerUi = new UniversalInstallerUI(
+        UniversalInstallerViewImpl installerUi = new UniversalInstallerViewImpl(
                 controller
         );
         installerUi.setVisible(true);
